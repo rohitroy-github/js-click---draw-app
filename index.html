@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div class="selection-btn-container">
+        <button class="shape-selection-button" id="shapeSelectionCircle">
+          Circle
+        </button>
+        <button class="shape-selection-button" id="shapeSelectionSquare">
+          Square
+        </button>
+        <button class="shape-selection-button" id="shapeSelectionRectangle">
+          Rectangle
+        </button>
+      </div>
+      <canvas
+        id="canvas"
+        width="750"
+        height="500"
+        class="canvas-plate"
+      ></canvas>
+      <div class="selection-btn-container">
+        <button class="reset-button" id="resetButton">Reset</button>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
