@@ -3,6 +3,17 @@ const resetButton = document.getElementById("resetButton");
 const myDiv = document.getElementById("myDiv");
 const drawBtn = document.getElementById("draw-btn");
 
+const xCoordinateInitialValue = document.getElementById(
+  "xCoordinateInitialValue"
+);
+const yCoordinateInitialValue = document.getElementById(
+  "yCoordinateInitialValue"
+);
+const xCoordinateFinalValue = document.getElementById("xCoordinateFinalValue");
+const yCoordinateFinalValue = document.getElementById("yCoordinateFinalValue");
+
+let htmlElement;
+
 let isDragging = false;
 let currentX, currentY, initialX, initialY;
 
@@ -33,8 +44,11 @@ myDiv.addEventListener("mousemove", (e) => {
 });
 
 drawBtn.addEventListener("click", () => {
-  newDivElement = `<div class="html-element" style="width: ${currentX}px; height: ${currentY}px; top: ${initialY}px; left: ${initialX}px;"></div>`;
-  myDiv.innerHTML = newDivElement;
+  drawHTMLElement();
+  xCoordinateInitialValue.innerHTML = `Inital X-Coordinate : ${initialX}`;
+  yCoordinateInitialValue.innerHTML = `Inital Y-Coordinate : ${initialY}`;
+  xCoordinateFinalValue.innerHTML = `Final Y-Coordinate : ${currentX}`;
+  yCoordinateFinalValue.innerHTML = `Final Y-Coordinate : ${currentY}`;
 });
 
 function clearCanvas() {
@@ -42,7 +56,13 @@ function clearCanvas() {
   currentY = 0;
   initialX = 0;
   initialY = 0;
-  drawHTMLElement();
+  myDiv.removeChild(htmlElement);
+}
+
+function drawHTMLElement() {
+  newDivElement = `<div id="htmlElement" class="htmlElement" style="width: ${currentX}px; height: ${currentY}px; top: ${initialY}px; left: ${initialX}px;"></div>`;
+  htmlElement = document.getElementById("htmlElement");
+  myDiv.innerHTML = newDivElement;
 }
 
 // function drawRectangle() {
@@ -54,7 +74,6 @@ function clearCanvas() {
 //   ctx.stroke();
 // }
 
-// resetButton.addEventListener("click", () => {
-//   canvas.width = canvas.width;
-//   canvas.classList.remove("rectangle");
-// });
+resetButton.addEventListener("click", () => {
+  clearCanvas();
+});

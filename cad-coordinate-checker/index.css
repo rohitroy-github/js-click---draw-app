@@ -2,6 +2,8 @@
 
 body {
   height: 100%;
+  /* padding: 0;
+  margin: 0; */
 }
 
 .container {
@@ -12,16 +14,17 @@ body {
   position: absolute;
 }
 
-.myDiv {
+.drawingCanvas {
   width: 75%;
   height: 50%;
   border: 1px solid black;
   user-select: none;
   display: flex;
   position: relative;
+  /* align-self: center; */
 }
 
-.html-element {
+.htmlElement {
   border: 1px solid black;
   position: relative;
 }
@@ -42,7 +45,14 @@ body {
   font-weight: 700;
 }
 
-.reset-btn {
+.resetButton {
+  padding: 1%;
+  margin: 1%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.btn {
   padding: 1%;
   margin: 1%;
   font-family: 'Montserrat', sans-serif;
