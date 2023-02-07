@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+body {
+  height: 100%;
+}
+
+#myDiv {
+  width: 1000px;
+  height: 500px;
+  border: 1px solid black;
+  user-select: none;
+}
+
+.html-element {
+  border: 1px solid black;
+  position: absolute;
+}

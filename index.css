@@ -71,3 +71,17 @@ canvas {
   background-color: red;
   position: absolute;
 }
+
+.options {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.option-btn {
+  display: flex;
+  margin: 1%;
+  width: 50%;
+  font-family: 'Montserrat', sans-serif;
+}
