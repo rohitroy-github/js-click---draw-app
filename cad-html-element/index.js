@@ -12,6 +12,9 @@ myDiv.addEventListener("mousedown", (e) => {
   isDragging = true;
   initialX = e.clientX - myDiv.offsetLeft;
   initialY = e.clientY - myDiv.offsetTop;
+
+  // startDivElementHere
+  // newDivElement = `<div class="html-element" style="width: ${currentX}px; height: ${currentY}px; top: ${initialY}px; left: ${initialX}px;"></div>`;
 });
 
 myDiv.addEventListener("mouseup", () => {
@@ -20,8 +23,8 @@ myDiv.addEventListener("mouseup", () => {
 
 myDiv.addEventListener("mousemove", (e) => {
   if (isDragging) {
-    console.log(initialX, initialY);
-    console.log(currentX, currentY);
+    // console.log(initialX, initialY);
+    // console.log(currentX, currentY);
 
     currentX = e.clientX - initialX;
     currentY = e.clientY - initialY;
@@ -29,21 +32,17 @@ myDiv.addEventListener("mousemove", (e) => {
     // drawHTMLElement();
     // myDiv.style.top = currentY + "px";
     // myDiv.style.left = currentX + "px";
+
+    // updateTheHeightandWidthHere
+    newDivElement = `<div class="childElement" id="childElement" style="width: ${currentX}px; height: ${currentY}px; top: ${initialY}px; left: ${initialX}px;"></div>`;
   }
 });
 
 drawBtn.addEventListener("click", () => {
-  newDivElement = `<div class="html-element" style="width: ${currentX}px; height: ${currentY}px; top: ${initialY}px; left: ${initialX}px;"></div>`;
+  newDivElement = `<div class="childElement" id="childElement" style="width: ${currentX}px; height: ${currentY}px; top: ${initialY}px; left: ${initialX}px;"></div>`;
+
   myDiv.innerHTML = newDivElement;
 });
-
-function clearCanvas() {
-  currentX = 0;
-  currentY = 0;
-  initialX = 0;
-  initialY = 0;
-  drawHTMLElement();
-}
 
 // function drawRectangle() {
 //   console.log(startX, startY);
@@ -54,7 +53,9 @@ function clearCanvas() {
 //   ctx.stroke();
 // }
 
-// resetButton.addEventListener("click", () => {
-//   canvas.width = canvas.width;
-//   canvas.classList.remove("rectangle");
-// });
+// functionToResetCanvas
+resetButton.addEventListener("click", () => {
+  var childElement = document.getElementById("childElement");
+
+  myDiv.innerHTML = myDiv.innerHTML.replace(childElement.outerHTML, "");
+});
