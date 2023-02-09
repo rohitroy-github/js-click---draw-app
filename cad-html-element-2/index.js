@@ -16,10 +16,12 @@ container.addEventListener("mousemove", drawing);
 resetBtn.addEventListener("click", resetCanvas);
 
 function drawStart(e) {
-  rect.style.border = "2px solid black";
+  rect.style.border = "3px solid black";
   rect.style.position = "relative";
-  rect.style.width = "50px";
-  rect.style.height = "25px";
+  // rect.style.width = "50px";
+  // rect.style.height = "25px";
+  rect.style.width = "0px";
+  rect.style.height = "0px";
 
   initialX = e.clientX;
   initialY = e.clientY;
