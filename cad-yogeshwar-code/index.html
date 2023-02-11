@@ -8,10 +8,18 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <button id="drawBtn">Draw</button>
-    <div id="sidebar">
-      <h3>Created Rectangles</h3>
-      <ul id="rectList"></ul>
+    <div class="container">
+      <!-- <div id="drawingCanvas" class="drawingCanvas"></div> -->
+      <div id="sidebar">
+        <div class="functionButtons">
+          <button id="drawBtn" class="funcBtn">Draw</button>
+          <!-- <button id="resetBtn" class="funcBtn">Reset Canvas</button> -->
+        </div>
+        <div class="rectangleData">
+          <h3>Rectangle Data</h3>
+          <ul id="rectList"></ul>
+        </div>
+      </div>
     </div>
 
     <script src="index.js"></script>
