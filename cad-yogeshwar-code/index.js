@@ -1,14 +1,23 @@
 const drawBtn = document.querySelector("#drawBtn");
+// const resetBtn = document.querySelector("#resetBtn");
 const rectList = document.querySelector("#rectList");
+// const drawingCanvas = document.querySelector("#drawingCanvas");
+
 let isDrawing = false;
 let startX, startY;
 let currentRect;
+
+// resetBtn.addEventListener("click", () => {
+//   isDrawing = false;
+//   // console.log("reset-fired");
+//   document.body.removeChild(currentRect);
+// });
 
 drawBtn.addEventListener("click", () => {
   isDrawing = true;
 });
 
-rectList.addEventListener("click", (e) => {
+document.addEventListener("click", (e) => {
   const selectedRect = document.querySelector(".selected");
   if (selectedRect) {
     selectedRect.classList.remove("selected");
@@ -28,7 +37,8 @@ document.addEventListener("mousedown", (e) => {
     currentRect.classList.add("rect");
     currentRect.style.left = startX + "px";
     currentRect.style.top = startY + "px";
-    document.body.appendChild(currentRect);
+    // document.body.appendChild(currentRect);
+    drawingCanvas.appendChild(currentRect);
   }
 });
 
