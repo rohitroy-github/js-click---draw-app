@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+.rect {
+  position: absolute;
+  border: 3px solid black;
+  /* background-color: lightgray; */
+}
+#sidebar {
+  position: absolute;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-color: lightblue;
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+#rectList {
+  list-style-type: none;
+  padding: 0;
+}
+.selected {
+  border: 2px solid blue;
+}
+
+#drawBtn {
+  font-family: 'Montserrat', sans-serif;
+}
