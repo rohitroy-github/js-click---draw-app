@@ -6,13 +6,17 @@ const drawingCanvas = document.querySelector("#drawingCanvas");
 let isDrawing = false;
 let startX, startY;
 let currentRect;
+let rectItem;
 
 drawBtn.style.backgroundColor = "red";
 
 resetBtn.addEventListener("click", () => {
   isDrawing = false;
-  // console.log("reset-fired");
-  document.body.removeChild(currentRect);
+  console.log("reset-fired");
+  // clearingRectangleData
+  rectList.innerHTML = "";
+  // clearingDrawingCanvas
+  drawingCanvas.innerHTML = "";
 });
 
 drawBtn.addEventListener("click", () => {
@@ -77,7 +81,7 @@ drawingCanvas.addEventListener("mouseup", (e) => {
     // printingDivDetails
     const rectId = Date.now();
     currentRect.setAttribute("data-rect", rectId);
-    const rectItem = document.createElement("li");
+    rectItem = document.createElement("li");
     rectItem.innerHTML = `Rectangle (${rect.x}, ${rect.y}) - (${
       rect.x + rect.width
     }, ${rect.y + rect.height})`;
