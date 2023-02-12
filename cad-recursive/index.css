@@ -75,5 +75,5 @@ body {
   padding: 0;
 }
 .selected {
-  border: 2px solid blue;
+  border: 3px dotted blue;
 }

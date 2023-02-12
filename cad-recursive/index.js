@@ -49,21 +49,32 @@ drawingCanvas.addEventListener("mousemove", (e) => {
   if (currentRect && isDrawing) {
     const deltaX = e.clientX - startX;
     const deltaY = e.clientY - startY;
-    currentRect.style.width = deltaX + "px";
-    currentRect.style.height = deltaY + "px";
+
+    currentRect.style.width = Math.abs(deltaX) + "px";
+    currentRect.style.height = Math.abs(deltaY) + "px";
+
+    if (deltaX < 0) {
+      currentRect.style.left = e.clientX + "px";
+    }
+    if (deltaY < 0) {
+      currentRect.style.top = e.clientY + "px";
+    }
   }
 });
 
 drawingCanvas.addEventListener("mouseup", (e) => {
   if (currentRect) {
+    // stopDrawing
     drawBtn.style.backgroundColor = "red";
     isDrawing = false;
+    // fetchingDivDimentions
     const rect = {
       x: parseInt(currentRect.style.left),
       y: parseInt(currentRect.style.top),
       width: parseInt(currentRect.style.width),
       height: parseInt(currentRect.style.height),
     };
+    // printingDivDetails
     const rectId = Date.now();
     currentRect.setAttribute("data-rect", rectId);
     const rectItem = document.createElement("li");
