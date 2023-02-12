@@ -30,7 +30,8 @@ body {
 .rect {
   position: absolute;
   border: 3px solid black;
-  /* background-color: lightgray; */
+  background-color: lightgray;
+  z-index: 1;
 }
 
 #sidebar {
@@ -75,5 +76,5 @@ body {
   padding: 0;
 }
 .selected {
-  border: 3px dotted blue;
+  border: 3px solid blue;
 }

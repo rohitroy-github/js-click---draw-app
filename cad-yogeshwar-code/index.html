@@ -1,27 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="index.css" />
+    <style>
+      .rect {
+        position: absolute;
+        border: 1px solid black;
+        background-color: lightgray;
+      }
+      #sidebar {
+        position: absolute;
+        right: 0;
+        width: 200px;
+        height: 100%;
+        background-color: lightblue;
+        padding: 10px;
+      }
+      #rectList {
+        list-style-type: none;
+        padding: 0;
+      }
+      .selected {
+        border: 2px solid blue;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <!-- <div id="drawingCanvas" class="drawingCanvas"></div> -->
-      <div id="sidebar">
-        <div class="functionButtons">
-          <button id="drawBtn" class="funcBtn">Draw</button>
-          <!-- <button id="resetBtn" class="funcBtn">Reset Canvas</button> -->
-        </div>
-        <div class="rectangleData">
-          <h3>Rectangle Data</h3>
-          <ul id="rectList"></ul>
-        </div>
-      </div>
+    <button id="drawBtn">Draw</button>
+    <div id="sidebar">
+      <h3>Created Rectangles</h3>
+      <ul id="rectList"></ul>
     </div>
+    <script>
+      const drawBtn = document.querySelector("#drawBtn");
+      const rectList = document.querySelector("#rectList");
+      let isDrawing = false;
+      let startX, startY;
+      let currentRect;
 
-    <script src="index.js"></script>
+      drawBtn.addEventListener("click", () => {
+        isDrawing = true;
+      });
+
+      rectList.addEventListener("click", (e) => {
+        const selectedRect = document.querySelector(".selected");
+        if (selectedRect) {
+          selectedRect.classList.remove("selected");
+        }
+        const rectId = e.target.dataset.rectId;
+        if (rectId) {
+          const rect = document.querySelector(`[data-rect="${rectId}"]`);
+          rect.classList.add("selected");
+        }
+      });
+
+      document.addEventListener("mousedown", (e) => {
+        if (isDrawing) {
+          startX = e.clientX;
+          startY = e.clientY;
+          currentRect = document.createElement("div");
+          currentRect.classList.add("rect");
+          currentRect.style.left = startX + "px";
+          currentRect.style.top = startY + "px";
+          document.body.appendChild(currentRect);
+        }
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (currentRect && isDrawing) {
+          const deltaX = e.clientX - startX;
+          const deltaY = e.clientY - startY;
+          currentRect.style.width = deltaX + "px";
+          currentRect.style.height = deltaY + "px";
+        }
+      });
+
+      document.addEventListener("mouseup", (e) => {
+        if (currentRect) {
+          isDrawing = false;
+          const rect = {
+            x: parseInt(currentRect.style.left),
+            y: parseInt(currentRect.style.top),
+            width: parseInt(currentRect.style.width),
+            height: parseInt(currentRect.style.height),
+          };
+          const rectId = Date.now();
+          currentRect.setAttribute("data-rect", rectId);
+          const rectItem = document.createElement("li");
+          rectItem.innerHTML = `Rectangle (${rect.x}, ${rect.y}) - (${
+            rect.x + rect.width
+          }, ${rect.y + rect.height})`;
+          rectItem.setAttribute("data-rect-id", rectId);
+          rectList.appendChild(rectItem);
+          currentRect = null;
+        }
+      });
+    </script>
   </body>
 </html>

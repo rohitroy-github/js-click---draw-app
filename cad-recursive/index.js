@@ -24,7 +24,7 @@ drawBtn.addEventListener("click", () => {
   isDrawing = true;
 });
 
-drawBtn.addEventListener("click", (e) => {
+rectList.addEventListener("click", (e) => {
   const selectedRect = document.querySelector(".selected");
   if (selectedRect) {
     selectedRect.classList.remove("selected");
