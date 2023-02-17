@@ -18,28 +18,56 @@ let rectangleToBeDelete;
 
 drawBtn.style.backgroundColor = "red";
 
+// resetButton
 resetBtn.addEventListener("click", () => {
+  drawBtn.style.backgroundColor = "red";
+  allowedToDraw = false;
   isDrawing = false;
+
+  // check
   console.log("reset-fired");
+
   // clearingRectangleData
   rectList.innerHTML = "";
   // clearingDrawingCanvas
   drawingCanvas.innerHTML = "";
 });
 
+// deleteButton
+deleteBtn.addEventListener("click", () => {
+  // removeTheSelectedDivElementFromCanvas;
+  drawingCanvas.removeChild(rectangleToBeDelete);
+
+  // fetchingIDOfTheSelectedDivElementToDelete
+  const matchingAttributeElement = rectList.querySelector(
+    `li[data-rect-id="${rectIdToBeDeleted}"]`
+  );
+
+  // removingSpecificIdListElementFromRectangleList
+  rectList.removeChild(matchingAttributeElement);
+
+  // check
+  // console.log("deleted : ", rectIdToBeDeleted);
+});
+
+// drawButton
 drawBtn.addEventListener("click", () => {
+  // checkIfAlreadyClickedBefore?
   if (allowedToDraw) {
+    // ifGreen
     drawBtn.style.backgroundColor = "red";
     allowedToDraw = false;
     isDrawing = false;
   } else {
+    // IfRed
     drawBtn.style.backgroundColor = "green";
     allowedToDraw = true;
     isDrawing = true;
   }
 });
 
-const selectRectangle = (e) => {
+// rectListEventListener(selectRectanglesOnSideBar)
+rectList.addEventListener("click", (e) => {
   const selectedRect = document.querySelector(".selected");
 
   if (selectedRect) {
@@ -48,51 +76,21 @@ const selectRectangle = (e) => {
 
   const rectId = e.target.dataset.rectId;
 
+  // selectingSameRectangleIDToBeDeleted?
   rectIdToBeDeleted = e.target.dataset.rectId;
 
-  console.log("selected : ", rectId);
-  console.log("rectIdToBeDeleted : ", rectIdToBeDeleted);
-
-  //selectRectangleToDelete
-
+  // ifRectSelected?
   if (rectId) {
     const rect = document.querySelector(`[data-rect="${rectId}"]`);
 
+    // selectingSameRectangleToBeDeleted?
     rectangleToBeDelete = document.querySelector(`[data-rect="${rectId}"]`);
 
     rect.classList.add("selected");
   }
-};
-
-deleteBtn.addEventListener("click", () => {
-  drawingCanvas.removeChild(rectangleToBeDelete);
-
-  const matchingAttributeElement = rectList.querySelector(
-    `li[data-rect-id="${rectIdToBeDeleted}"]`
-  );
-
-  console.log(matchingAttributeElement);
-
-  rectList.removeChild(matchingAttributeElement);
-
-  console.log("deleted : ", rectIdToBeDeleted);
-  // deleteBtn = false;
 });
 
-// rectList.addEventListener("click", (e) => {
-//   const selectedRect = document.querySelector(".selected");
-//   if (selectedRect) {
-//     selectedRect.classList.remove("selected");
-//   }
-//   const rectId = e.target.dataset.rectId;
-//   if (rectId) {
-//     const rect = document.querySelector(`[data-rect="${rectId}"]`);
-//     rect.classList.add("selected");
-//   }
-// });
-
-rectList.addEventListener("click", (e) => selectRectangle(e));
-
+// canvasOperation/mousedown
 drawingCanvas.addEventListener("mousedown", (e) => {
   if (isDrawing && allowedToDraw) {
     startX = e.clientX;
@@ -106,6 +104,7 @@ drawingCanvas.addEventListener("mousedown", (e) => {
   }
 });
 
+// canvasOperation/mousemove
 drawingCanvas.addEventListener("mousemove", (e) => {
   if (currentRect && isDrawing && allowedToDraw) {
     // console.log("e.clientX = " + e.clientX);
