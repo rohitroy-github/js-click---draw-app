@@ -14,7 +14,6 @@ let rectItem;
 
 let rectIdToBeDeleted;
 let rectangleToBeDelete;
-// let matchingAttributeElement;
 
 drawBtn.style.backgroundColor = "red";
 
@@ -150,3 +149,11 @@ drawingCanvas.addEventListener("mouseup", (e) => {
     currentRect = null;
   }
 });
+
+// htmlElementMenuItemButtons
+const addDiv = document.querySelector("#addDiv");
+const addHeading = document.querySelector("#addHeading");
+const addParagraph = document.querySelector("#drawBtn");
+const addImage = document.querySelector("#addImage");
+const addTable = document.querySelector("#addTable");
+const addForm = document.querySelector("#addForm");
