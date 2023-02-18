@@ -157,3 +157,11 @@ const addParagraph = document.querySelector("#drawBtn");
 const addImage = document.querySelector("#addImage");
 const addTable = document.querySelector("#addTable");
 const addForm = document.querySelector("#addForm");
+
+// addingANewDivvElementOnButttonPress
+
+addDiv.addEventListener("click", () => {
+  const newDiv = document.createElement("div");
+  newDiv.classList.add("newlyCreatedDivElement"); // add class to new div
+  drawingCanvas.appendChild(newDiv);
+});
