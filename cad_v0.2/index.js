@@ -181,3 +181,11 @@ addParagraph.addEventListener("click", () => {
   newParagraph.classList.add("newlyCreatedParagraphElement"); // add class to new paragraph
   drawingCanvas.appendChild(newParagraph);
 });
+
+// addingANewImageElementOnButttonPress
+addImage.addEventListener("click", () => {
+  const img = document.createElement("img");
+  img.src = "./demoImage.jpg";
+  img.classList.add("newlyCreatedImageElement");
+  drawingCanvas.appendChild(img);
+});
