@@ -149,3 +149,11 @@ li {
   font-size: 15px;
   color: black;
 }
+
+/* image */
+.newlyCreatedImageElement {
+  height: 100px;
+  width: 200px;
+}
+
+table
