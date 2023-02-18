@@ -189,3 +189,57 @@ addImage.addEventListener("click", () => {
   img.classList.add("newlyCreatedImageElement");
   drawingCanvas.appendChild(img);
 });
+
+//addingANewTableElementOnButttonPress
+addTable.addEventListener("click", () => {
+  var table = document.createElement("table");
+  table.classList.add("newlyCreatedFormElement");
+  var rows = 2; // Set the number of rows
+  var cols = 3; // Set the number of columns
+  for (var i = 0; i < rows; i++) {
+    var row = table.insertRow(i);
+    for (var j = 0; j < cols; j++) {
+      var cell = row.insertCell(j);
+      cell.innerHTML = "Row " + i + ", Column " + j;
+    }
+  }
+  drawingCanvas.appendChild(table);
+});
+
+// addingANewFormElementOnButttonPress
+addForm.addEventListener("click", () => {
+  // Create a new form element
+  const form = document.createElement("form");
+  form.classList.add("newlyCreatedFormElement");
+
+  // Add form fields
+  const usernameLabel = document.createElement("label");
+  usernameLabel.setAttribute("for", "username");
+  usernameLabel.innerText = "Username";
+  form.appendChild(usernameLabel);
+
+  const usernameInput = document.createElement("input");
+  usernameInput.setAttribute("type", "text");
+  usernameInput.setAttribute("id", "username");
+  usernameInput.setAttribute("name", "username");
+  form.appendChild(usernameInput);
+
+  const passwordLabel = document.createElement("label");
+  passwordLabel.setAttribute("for", "password");
+  passwordLabel.innerText = "Password";
+  form.appendChild(passwordLabel);
+
+  const passwordInput = document.createElement("input");
+  passwordInput.setAttribute("type", "password");
+  passwordInput.setAttribute("id", "password");
+  passwordInput.setAttribute("name", "password");
+  form.appendChild(passwordInput);
+
+  const submitButton = document.createElement("button");
+  submitButton.setAttribute("type", "submit");
+  submitButton.innerText = "Login";
+  form.appendChild(submitButton);
+
+  // Add the form to the login form container
+  drawingCanvas.appendChild(form);
+});

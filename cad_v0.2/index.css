@@ -156,4 +156,54 @@ li {
   width: 200px;
 }
 
-table
+/* table */
+.newlyCreatedTableElement {
+  width: 200px;
+  height: 100px;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+td {
+  padding: 1px;
+  font-size: 10px;
+  border: 1px solid black;
+}
+
+/* form */
+.newlyCreatedFormElement {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid black;
+  /* display: none; */
+  margin: 1%;
+  padding: 1%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newlyCreatedFormElement label {
+  display: block;
+  margin-bottom: 1px;
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newlyCreatedFormElement input[type='text'],
+.newlyCreatedFormElement input[type='password'] {
+  align-items: center;
+  width: inherit;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newlyCreatedFormElement button {
+  padding: 2px 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+}
