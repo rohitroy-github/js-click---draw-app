@@ -140,5 +140,12 @@ li {
   width: fit-content;
 }
 
+/* paragraph/p */
 .newlyCreatedParagraphElement {
+  font-weight: bold;
+  margin: 0.5%;
+  height: fit-content;
+  width: fit-content;
+  font-size: 15px;
+  color: black;
 }

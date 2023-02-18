@@ -153,7 +153,7 @@ drawingCanvas.addEventListener("mouseup", (e) => {
 // htmlElementMenuItemButtons
 const addDiv = document.querySelector("#addDiv");
 const addHeading = document.querySelector("#addHeading");
-const addParagraph = document.querySelector("#drawBtn");
+const addParagraph = document.querySelector("#addParagraph");
 const addImage = document.querySelector("#addImage");
 const addTable = document.querySelector("#addTable");
 const addForm = document.querySelector("#addForm");
@@ -178,6 +178,6 @@ addHeading.addEventListener("click", () => {
 addParagraph.addEventListener("click", () => {
   const newParagraph = document.createElement("p");
   newParagraph.textContent = "New paragraph";
-  newParagraph.classList.add("bold-text"); // add class to new paragraph
-  drawingCanvas.appendChild(newHeading);
+  newParagraph.classList.add("newlyCreatedParagraphElement"); // add class to new paragraph
+  drawingCanvas.appendChild(newParagraph);
 });
