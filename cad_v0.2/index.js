@@ -158,10 +158,26 @@ const addImage = document.querySelector("#addImage");
 const addTable = document.querySelector("#addTable");
 const addForm = document.querySelector("#addForm");
 
-// addingANewDivvElementOnButttonPress
+// addingANewDivElementOnButttonPress
 
 addDiv.addEventListener("click", () => {
   const newDiv = document.createElement("div");
   newDiv.classList.add("newlyCreatedDivElement"); // add class to new div
   drawingCanvas.appendChild(newDiv);
+});
+
+// addingANewHeadingElementOnButttonPress
+addHeading.addEventListener("click", () => {
+  const newHeading = document.createElement("h3");
+  newHeading.classList.add("newlyCreatedHeadingElement"); // add class to new div
+  newHeading.textContent = "New heading <h3>";
+  drawingCanvas.appendChild(newHeading);
+});
+
+// addingANewParagraphElementOnButttonPress
+addParagraph.addEventListener("click", () => {
+  const newParagraph = document.createElement("p");
+  newParagraph.textContent = "New paragraph";
+  newParagraph.classList.add("bold-text"); // add class to new paragraph
+  drawingCanvas.appendChild(newHeading);
 });
