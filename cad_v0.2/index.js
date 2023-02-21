@@ -17,6 +17,14 @@ let rectangleToBeDelete;
 
 drawBtn.style.backgroundColor = "red";
 
+// dragging
+// settingIsDraggingToFalseInitially
+let isDragging = false;
+let xOffset = 0;
+let yOffset = 0;
+// settingAnElementToDragToBeChangedOnEveryClickOnAnElement
+let elementToDrag;
+
 // resetButton
 resetBtn.addEventListener("click", () => {
   drawBtn.style.backgroundColor = "red";
@@ -57,6 +65,7 @@ drawBtn.addEventListener("click", () => {
     drawBtn.style.backgroundColor = "red";
     allowedToDraw = false;
     isDrawing = false;
+    console.log("drawingCanvas", drawingCanvas);
   } else {
     // IfRed
     drawBtn.style.backgroundColor = "green";
@@ -84,8 +93,12 @@ rectList.addEventListener("click", (e) => {
 
     // selectingSameRectangleToBeDeleted?
     rectangleToBeDelete = document.querySelector(`[data-rect="${rectId}"]`);
+    console.log("rectangleToBeDelete", rectangleToBeDelete);
 
     rect.classList.add("selected");
+
+    elementToDrag = document.querySelector(`[data-rect="${rectId}"]`);
+    console.log("elementToDrag", elementToDrag);
   }
 });
 
@@ -149,6 +162,50 @@ drawingCanvas.addEventListener("mouseup", (e) => {
     currentRect = null;
   }
 });
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// draggingFunctionalities
+
+elementToDrag.addEventListener("mousedown", (e) => {
+  console.log("mousedown, dragging");
+
+  initialX = e.clientX - xOffset;
+  initialY = e.clientY - yOffset;
+  if (e.target === elementToDrag) {
+    isDragging = true;
+  }
+});
+
+elementToDrag.addEventListener("mouseup", (e) => {
+  console.log("mouseup, dragging");
+
+  initialX = currentX;
+  initialY = currentY;
+  isDragging = false;
+});
+
+elementToDrag.addEventListener("mousemove", (e) => {
+  console.log("mousemove, dragging");
+
+  if (isDragging) {
+    currentX = e.clientX - initialX;
+    currentY = e.clientY - initialY;
+
+    xOffset = currentX;
+    yOffset = currentY;
+
+    setTranslate(currentX, currentY, elementToDrag);
+  }
+});
+
+function setTranslate(xPos, yPos, el) {
+  el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // htmlElementMenuItemButtons
 const addDiv = document.querySelector("#addDiv");
