@@ -13,15 +13,19 @@ child.setAttribute("data-rect", "12345");
 
 parent.appendChild(child);
 
-child.addEventListener("mousedown", dragStart);
-child.addEventListener("mouseup", dragEnd);
-child.addEventListener("mousemove", drag);
+const rectId = 12345;
+
+elementToDrag = document.querySelector(`[data-rect="${rectId}"]`);
+
+elementToDrag.addEventListener("mousedown", dragStart);
+elementToDrag.addEventListener("mouseup", dragEnd);
+elementToDrag.addEventListener("mousemove", drag);
 
 function dragStart(e) {
-  console.log(child);
+  console.log(elementToDrag);
   initialX = e.clientX - xOffset;
   initialY = e.clientY - yOffset;
-  if (e.target === child) {
+  if (e.target === elementToDrag) {
     isDragging = true;
   }
 }
@@ -40,10 +44,10 @@ function drag(e) {
     xOffset = currentX;
     yOffset = currentY;
 
-    setTranslate(currentX, currentY, child);
+    setTranslate(currentX, currentY, elementToDrag);
   }
 }
 
-function setTranslate(xPos, yPos, el) {
-  el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+function setTranslate(xPos, yPos, element) {
+  element.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
 }
