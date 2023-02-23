@@ -91,6 +91,7 @@ body {
 }
 .selected {
   border: 3px solid blue;
+  cursor: pointer;
 }
 
 li {

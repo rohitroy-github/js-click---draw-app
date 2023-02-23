@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+svg {
+  background-color: beige;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.button {
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  background: #dfdfdf;
+  width: 100px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+#drawingBoard {
+  border: 1px solid;
+}
+
+.controls {
+  width: 300px;
+  height: 600px;
+  border: 1px solid;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.strokeWidthWrapper,
+.strokeColorWrapper,
+.fillColorWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 1rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.swatchStroke,
+.swatchFill {
+  width: 30px;
+  height: 30px;
+  margin: 4px;
+  border: 2px solid #757575;
+  padding: 2px;
+}
+
+#strokeDiv,
+#fillDiv {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.noFillDiv {
+  text-align: center;
+  margin-top: 2px;
+}
+
+.noFill {
+  border: 1px solid #757575;
+  padding: 1px 5px;
+  cursor: pointer;
+}
