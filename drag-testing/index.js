@@ -1,53 +1,27 @@
-// Get the parent and child div elements
-const parentDiv = document.getElementById("parentDiv");
-const childDiv = document.getElementById("childDiv");
+var parent = document.getElementById("parent");
+var children = document.getElementsByClassName("child");
+var selectedChild = null;
+var isDragging = false;
+var mouseOffset = {x: 0, y: 0};
 
-// Add an event listener to the child div element for when it is clicked on
-childDiv.addEventListener("mousedown", dragStart);
+for (var i = 0; i < children.length; i++) {
+  children[i].addEventListener("mousedown", function (event) {
+    selectedChild = event.target;
+    isDragging = true;
+    mouseOffset.x = event.offsetX;
+    mouseOffset.y = event.offsetY;
+  });
+}
 
-// Set the initial position of the child div element
-let initialX;
-let initialY;
-let currentX;
-let currentY;
-let xOffset = 0;
-let yOffset = 0;
-let active = false;
-
-function dragStart(e) {
-  initialX = e.clientX - xOffset;
-  initialY = e.clientY - yOffset;
-
-  if (e.target === childDiv) {
-    active = true;
+document.addEventListener("mousemove", function (event) {
+  if (isDragging) {
+    var newX = event.pageX - mouseOffset.x - parent.offsetLeft;
+    var newY = event.pageY - mouseOffset.y - parent.offsetTop;
+    selectedChild.style.left = newX + "px";
+    selectedChild.style.top = newY + "px";
   }
-}
+});
 
-function dragEnd(e) {
-  initialX = currentX;
-  initialY = currentY;
-
-  active = false;
-}
-
-function drag(e) {
-  if (active) {
-    e.preventDefault();
-
-    currentX = e.clientX - initialX;
-    currentY = e.clientY - initialY;
-
-    xOffset = currentX;
-    yOffset = currentY;
-
-    setTranslate(currentX, currentY, childDiv);
-  }
-}
-
-function setTranslate(xPos, yPos, el) {
-  el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-}
-
-// Add event listeners to the document for when the mouse is moved and released
-document.addEventListener("mousemove", drag);
-document.addEventListener("mouseup", dragEnd);
+document.addEventListener("mouseup", function (event) {
+  isDragging = false;
+});
