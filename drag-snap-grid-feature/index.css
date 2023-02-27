@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.parent {
+  display: grid;
+  position: absolute;
+  /* width: 100%;
+  height: 100vh; */
+
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+
+  border: 5px solid black;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.child {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  background-image: linear-gradient(
+    to right top,
+    #ec1ae6,
+    #c82bea,
+    #a036eb,
+    #713eea,
+    #2642e6
+  );
+  border: 3px solid black;
+  cursor: all-scroll;
+  z-index: 1;
+
+  /* easesOutTransitionBetweenGridLines */
+  transition: transform 0.1s ease-out;
+
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+}
+
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, black 1px, transparent 1px),
+    linear-gradient(to bottom, black 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 0 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  text-align: right;
+  font-size: 25px;
+  opacity: 0.5;
+}
+
+/* .parent {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+}
+
+.child {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  cursor: move;
+}
+
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, black 1px, transparent 1px),
+    linear-gradient(to bottom, black 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 0 0;
+} */
