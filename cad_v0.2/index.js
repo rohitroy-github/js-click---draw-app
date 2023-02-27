@@ -1,3 +1,5 @@
+// import {DragDrop} from "./MyDNDClass.js";
+
 const drawBtn = document.querySelector("#drawBtn");
 const resetBtn = document.querySelector("#resetBtn");
 const dragBtn = document.querySelector("#dragBtn");
@@ -17,11 +19,12 @@ let rectIdToBeDeleted;
 let rectangleToBeDelete;
 
 drawBtn.style.backgroundColor = "red";
+dragBtn.style.backgroundColor = "red";
 
 // dragging
 // settingIsDraggingToFalseInitially
-let isDragging = false;
-let allowedToDrag = false;
+// let isDragging = false;
+// let allowedToDrag = false;
 let xOffset = 0;
 let yOffset = 0;
 // settingAnElementToDragToBeChangedOnEveryClickOnAnElement
@@ -30,7 +33,7 @@ let elementToDrag;
 // resetButton
 resetBtn.addEventListener("click", () => {
   drawBtn.style.backgroundColor = "red";
-  allowedToDraw = false;
+  // allowedToDraw = false;
   isDrawing = false;
 
   // check
@@ -67,6 +70,7 @@ drawBtn.addEventListener("click", () => {
     drawBtn.style.backgroundColor = "red";
     allowedToDraw = false;
     isDrawing = false;
+    // allowedToDrag = true;
     // console.log("drawingCanvas", drawingCanvas);
   } else {
     // IfRed
@@ -99,8 +103,8 @@ rectList.addEventListener("click", (e) => {
     // elementToDrag = document.querySelector(`[data-rect="${rectId}"]`);
     // adding"draggable"ClassToTheSelectedElement
     rect.classList.add("draggable");
-    allowedToDrag = true;
-    console.log("allowedToDrag", allowedToDrag);
+    // allowedToDrag = true;
+    // console.log("allowedToDrag", allowedToDrag);
     console.log("selectedRect", rect);
 
     // selectingSameRectangleToBeDeleted?
@@ -227,64 +231,142 @@ drawingCanvas.addEventListener("mouseup", (e) => {
 // draggingModule2
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+// dragBtn.addEventListener("click", () => {
+//   // selectingChildDivWithAttribute=draggable
+//   const childDiv = document.querySelector(".draggable");
+
+//   // switchingDrawButtonToFalse
+//   drawBtn.style.backgroundColor = "red";
+//   allowedToDraw = false;
+//   isDrawing = false;
+
+//   // Add an event listener to the child div element for when it is clicked on
+//   childDiv.addEventListener("mousedown", dragStart);
+
+//   // Set the initial position of the child div element
+//   let initialX;
+//   let initialY;
+//   let currentX;
+//   let currentY;
+//   let xOffset = 0;
+//   let yOffset = 0;
+//   let active = false;
+
+//   function dragStart(e) {
+//     initialX = e.clientX - xOffset;
+//     initialY = e.clientY - yOffset;
+
+//     if (e.target === childDiv) {
+//       active = true;
+//     }
+//   }
+
+//   function dragEnd(e) {
+//     initialX = currentX;
+//     initialY = currentY;
+
+//     active = false;
+//   }
+
+//   function drag(e) {
+//     if (active) {
+//       e.preventDefault();
+
+//       currentX = e.clientX - initialX;
+//       currentY = e.clientY - initialY;
+
+//       xOffset = currentX;
+//       yOffset = currentY;
+
+//       setTranslate(currentX, currentY, childDiv);
+//     }
+//   }
+
+//   function setTranslate(xPos, yPos, el) {
+//     el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+//   }
+
+//   // Add event listeners to the document for when the mouse is moved and released
+//   document.addEventListener("mousemove", drag);
+//   document.addEventListener("mouseup", dragEnd);
+// });
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// draggingModule3
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// dragBtn.addEventListener("click", () => {
+//   if (allowedToDrag) {
+//     const DragDropAB = new DragDrop(drawingCanvas);
+
+//     DragDropAB.activateChildElements();
+//   }
+
+//   // if (allowedToDrag) {
+//   // Activate drag and drop for all child elements of the container
+//   DragDropAB.activateChildElements();
+
+//   // Activate drag and drop functionality
+//   // DragDropAB.activate();
+//   // } else {
+//   //   // Deactivate drag and drop functionality
+//   //   DragDropAB.deactivate();
+//   // }
+// });
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// draggingModule4
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var selectedChild = null;
+var isDragging = false;
+var mouseOffset = {x: 0, y: 0};
+let allowedToDrag = false;
+
+// onClickingDragBtn
 dragBtn.addEventListener("click", () => {
-  // selectingChildDivWithAttribute=draggable
-  const childDiv = document.querySelector(".draggable");
+  var children = document.getElementsByClassName("rect");
+  if (allowedToDrag) {
+    console.log("Stop Dragging !");
+    allowedToDrag = false;
+    dragBtn.style.backgroundColor = "red";
+  } else {
+    console.log("Start Dragging !");
+    console.log(children);
+    allowedToDrag = true;
+    dragBtn.style.backgroundColor = "green";
+  }
 
-  // switchingDrawButtonToFalse
-  drawBtn.style.backgroundColor = "red";
-  allowedToDraw = false;
-  isDrawing = false;
+  for (var i = 0; i < children.length; i++) {
+    children[i].addEventListener("mousedown", function (event) {
+      if (allowedToDrag) {
+        selectedChild = event.target;
+        selectedChild.classList.add("draggingElement");
+        selectedChild.addC;
+        console.log(selectedChild);
+        isDragging = true;
+        mouseOffset.x = event.offsetX;
+        mouseOffset.y = event.offsetY;
+      }
+    });
+  }
 
-  // Add an event listener to the child div element for when it is clicked on
-  childDiv.addEventListener("mousedown", dragStart);
-
-  // Set the initial position of the child div element
-  let initialX;
-  let initialY;
-  let currentX;
-  let currentY;
-  let xOffset = 0;
-  let yOffset = 0;
-  let active = false;
-
-  function dragStart(e) {
-    initialX = e.clientX - xOffset;
-    initialY = e.clientY - yOffset;
-
-    if (e.target === childDiv) {
-      active = true;
+  document.addEventListener("mousemove", function (event) {
+    if (isDragging) {
+      var newX = event.pageX - mouseOffset.x - drawingCanvas.offsetLeft;
+      var newY = event.pageY - mouseOffset.y - drawingCanvas.offsetTop;
+      selectedChild.style.left = newX + "px";
+      selectedChild.style.top = newY + "px";
     }
-  }
+  });
 
-  function dragEnd(e) {
-    initialX = currentX;
-    initialY = currentY;
-
-    active = false;
-  }
-
-  function drag(e) {
-    if (active) {
-      e.preventDefault();
-
-      currentX = e.clientX - initialX;
-      currentY = e.clientY - initialY;
-
-      xOffset = currentX;
-      yOffset = currentY;
-
-      setTranslate(currentX, currentY, childDiv);
-    }
-  }
-
-  function setTranslate(xPos, yPos, el) {
-    el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-  }
-
-  // Add event listeners to the document for when the mouse is moved and released
-  document.addEventListener("mousemove", drag);
-  document.addEventListener("mouseup", dragEnd);
+  document.addEventListener("mouseup", function (event) {
+    isDragging = false;
+    selectedChild.classList.remove("draggingElement");
+  });
 });
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

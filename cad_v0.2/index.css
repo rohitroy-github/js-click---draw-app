@@ -6,7 +6,7 @@ body {
 }
 
 .mainContainer {
-  position: relative;
+  /* position: relative; */
   /* padding-top: 2%; */
   width: 100%;
   height: 100vh;
@@ -30,10 +30,10 @@ body {
 }
 
 .rect {
+  display: flex;
   position: absolute;
   border: 3px solid black;
   background-color: lightgray;
-  z-index: 1;
 }
 
 #sidebar {
@@ -89,9 +89,16 @@ body {
   list-style-type: none;
   padding: 0;
 }
+
 .selected {
   border: 3px solid blue;
   cursor: pointer;
+  z-index: 1;
+}
+
+.draggingElement {
+  cursor: all-scroll;
+  z-index: 99;
 }
 
 li {
