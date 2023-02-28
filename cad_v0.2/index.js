@@ -333,11 +333,20 @@ dragBtn.addEventListener("click", () => {
     console.log("Stop Dragging !");
     allowedToDrag = false;
     dragBtn.style.backgroundColor = "red";
+
+    // enablingDrawingFunctions
+    drawBtn.style.backgroundColor = "green";
+    allowedToDraw = true;
+    isDrawing = true;
   } else {
     console.log("Start Dragging !");
     console.log(children);
     allowedToDrag = true;
     dragBtn.style.backgroundColor = "green";
+
+    // stoppingDrawingFunctions
+    allowedToDraw = false;
+    drawBtn.style.backgroundColor = "red";
   }
 
   for (var i = 0; i < children.length; i++) {
