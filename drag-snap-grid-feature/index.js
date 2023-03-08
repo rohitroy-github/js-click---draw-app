@@ -7,8 +7,8 @@
 // let isDragging = false;
 // let initialX = 0;
 // let initialY = 0;
-// let xOffset = 0;
-// let yOffset = 0;
+// let xOffsetDrag = 0;
+// let yOffsetDrag = 0;
 
 // child.addEventListener("mousedown", dragStart);
 // child.addEventListener("mouseup", dragEnd);
@@ -17,8 +17,8 @@
 // function dragStart(e) {
 //   console.log("dragStart");
 
-//   initialX = e.clientX - xOffset;
-//   initialY = e.clientY - yOffset;
+//   initialX = e.clientX - xOffsetDrag;
+//   initialY = e.clientY - yOffsetDrag;
 
 //   console.log("initialX", initialX);
 //   console.log("initialY", initialY);
@@ -31,8 +31,8 @@
 // function dragEnd(e) {
 //   console.log("dragEnd");
 
-//   initialX = xOffset;
-//   initialY = yOffset;
+//   initialX = xOffsetDrag;
+//   initialY = yOffsetDrag;
 
 //   isDragging = false;
 
@@ -73,11 +73,11 @@
 //     let currentX = e.clientX - initialX;
 //     let currentY = e.clientY - initialY;
 
-//     xOffset = currentX;
-//     yOffset = currentY;
+//     xOffsetDrag = currentX;
+//     yOffsetDrag = currentY;
 
-//     console.log("xOffset", xOffset);
-//     console.log("yOffset", yOffset);
+//     console.log("xOffsetDrag", xOffsetDrag);
+//     console.log("yOffsetDrag", yOffsetDrag);
 
 //     setTranslate(currentX, currentY, child);
 //   }
@@ -97,8 +97,8 @@ let grid = document.querySelector(".grid");
 let isDragging = false;
 let initialX;
 let initialY;
-let xOffset = 0;
-let yOffset = 0;
+let xOffsetDrag = 0;
+let yOffsetDrag = 0;
 
 // eventListeners
 child.addEventListener("mousedown", dragStart);
@@ -107,8 +107,8 @@ child.addEventListener("mousemove", drag);
 
 // onMosueDown
 function dragStart(e) {
-  initialX = e.clientX - xOffset;
-  initialY = e.clientY - yOffset;
+  initialX = e.clientX - xOffsetDrag;
+  initialY = e.clientY - yOffsetDrag;
 
   if (e.target === child) {
     isDragging = true;
@@ -117,13 +117,13 @@ function dragStart(e) {
 
 // onMouseUp
 function dragEnd(e) {
-  initialX = xOffset;
-  initialY = yOffset;
+  initialX = xOffsetDrag;
+  initialY = yOffsetDrag;
 
   isDragging = false;
 
   // Snap the child to the nearest grid intersection
-  let gridSize = 200; // adjust as needed
+  let gridSize = 50; // adjust as needed
   let xSnap = Math.round(child.offsetLeft / gridSize) * gridSize;
   let ySnap = Math.round(child.offsetTop / gridSize) * gridSize;
 
@@ -141,8 +141,8 @@ function drag(e) {
     let currentX = e.clientX - initialX;
     let currentY = e.clientY - initialY;
 
-    xOffset = currentX;
-    yOffset = currentY;
+    xOffsetDrag = currentX;
+    yOffsetDrag = currentY;
 
     setTranslate(currentX, currentY, child);
 
